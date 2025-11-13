@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Caroneiro - Chat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Caroneiro</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+        <li><a href="destinos.html">Destinos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="chat-wrap">
+      <aside class="lista-conversas">
+        <h3>Conversas</h3>
+        <ul id="lista" style="list-style:none;padding:0;margin-top:10px"></ul>
+      </aside>
+
+      <div class="area-chat">
+        <div class="mensagens" id="mensagens"></div>
+
+        <div class="input-chat">
+          <input id="inputMsg" placeholder="Digite uma mensagem" />
+          <button id="enviaMsg">Enviar</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2025 Caroneiro</footer>
+
+  <script>
+    const keyMsgs = 'caroneiroMensagens';
+    const listaEl = document.getElementById('lista');
+    const msgsEl = document.getElementById('mensagens');
+
+    // Conversas simuladas
+    const conversas = [
+      {id: 'geral', nome: 'Geral'},
+      {id: 'praia', nome: 'Amigos de Praia'},
+      {id: 'montanha', nome: 'Montanhistas'}
+    ];
+
+    function renderConversas(){
+      listaEl.innerHTML = '';
+      conversas.forEach(c=>{
+        const li = document.createElement('li');
+        li.textContent = c.nome;
+        li.style.padding = '8px 6px';
+        li.style.cursor = 'pointer';
+        li.addEventListener('click', ()=>{selectConversa(c.id)});
+        listaEl.appendChild(li);
+      });
+    }
+
+    let conversaAtiva = 'geral';
+    function carregarMensagens(){
+      const all = JSON.parse(localStorage.getItem(keyMsgs) || '{}');
+      return all[conversaAtiva] || [];
+    }
+
+    function salvarMensagens(arr){
+      const all = JSON.parse(localStorage.getItem(keyMsgs) || '{}');
+      all[conversaAtiva] = arr;
+      localStorage.setItem(keyMsgs, JSON.stringify(all));
+    }
+
+    function renderMensagens(){
+      const arr = carregarMensagens();
+      msgsEl.innerHTML = '';
+      arr.forEach(m=>{
+        const d = document.createElement('div');
+        d.className = 'msg ' + (m.de === 'me' ? 'user' : 'other');
+        d.textContent = m.text;
+        msgsEl.appendChild(d);
+      });
+      msgsEl.scrollTop = msgsEl.scrollHeight;
+    }
+
+    document.getElementById('enviaMsg').addEventListener('click', ()=>{
+      const texto = document.getElementById('inputMsg').value.trim();
+      if(!texto) return;
+      const arr = carregarMensagens();
+      arr.push({de:'me',text:texto,ts:Date.now()});
+      salvarMensagens(arr);
+      document.getElementById('inputMsg').value = '';
+      renderMensagens();
+    });
+
+    function selectConversa(id){
+      conversaAtiva = id;
+      renderMensagens();
+    }
+
+    // Inicialização
+    renderConversas();
+    renderMensagens();
+  </script>
+</body>
+</html>
+
+
+<style>
+    /* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #f3f6fa;
+  color: #222;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #0077b6;
+  color: white;
+}
+
+header .logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* CONTAINER PRINCIPAL */
+.container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 15px;
+}
+
+/* ÁREA DO CHAT */
+.chat-wrap {
+  display: flex;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  height: 600px;
+}
+
+/* LISTA DE CONVERSAS */
+.lista-conversas {
+  width: 260px;
+  background: #e9f3ff;
+  border-right: 2px solid #d3e5f7;
+  padding: 20px;
+}
+
+.lista-conversas h3 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #023e8a;
+}
+
+.lista-conversas ul li {
+  background: #fff;
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.lista-conversas ul li:hover {
+  background: #d7ebff;
+}
+
+/* ÁREA DE CHAT */
+.area-chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* MENSAGENS */
+.mensagens {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #f8fbff;
+}
+
+/* MENSAGEM ENVIADA PELO USUÁRIO */
+.msg.user {
+  align-self: flex-end;
+  background: #0077b6;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px 10px 0 10px;
+  max-width: 65%;
+}
+
+/* MENSAGEM RECEBIDA */
+.msg.other {
+  align-self: flex-start;
+  background: #dfefff;
+  color: #000;
+  padding: 10px 14px;
+  border-radius: 10px 10px 10px 0;
+  max-width: 65%;
+}
+
+/* INPUT DO CHAT */
+.input-chat {
+  display: flex;
+  padding: 15px;
+  background: #fff;
+  border-top: 2px solid #e0e0e0;
+  gap: 10px;
+}
+
+.input-chat input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 1rem;
+}
+
+.input-chat input:focus {
+  border-color: #0077b6;
+}
+
+/* BOTÃO ENVIAR */
+.input-chat button {
+  padding: 12px 18px;
+  border: none;
+  background: #0077b6;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.2s;
+}
+
+.input-chat button:hover {
+  background: #023e8a;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #023e8a;
+  color: white;
+  margin-top: 40px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 800px) {
+  .chat-wrap {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .lista-conversas {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid #d3e5f7;
+  }
+}
+
+</style>

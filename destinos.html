@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Caroneiro - Destinos</title>
+  <link rel="stylesheet" href="destinos.css" />
+</head>
+
+<body>
+  <header>
+    <div class="logo">Caroneiro</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="chat.html">Chat</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>Destinos Populares</h2>
+
+    <div class="grid-destinos">
+
+      <!-- São Paulo -->
+      <div class="destino">
+        <img src=" santuario-nacional-nossa-senhora-aparecida-696x464.webp " alt="São Paulo">
+        <h3>São Paulo</h3>
+        <p>A maior cidade do Brasil, cheia de cultura, diversidade e vida noturna.</p>
+        <a href="#" class="btn">Ver mais</a>
+      </div>
+
+      <!-- Florianópolis -->
+      <div class="destino">
+        <img src=" florianopolis.jpg " alt="Florianópolis">
+        <h3>Florianópolis</h3>
+        <p>Praias paradisíacas, trilhas incríveis e clima perfeito para relaxar.</p>
+        <a href="#" class="btn">Ver mais</a>
+      </div>
+
+      <!-- Salvador -->
+      <div class="destino">
+        <img src=" salvador-brasilturis.webp  " alt="Salvador">
+        <h3>Salvador</h3>
+        <p>Beleza histórica, culinária marcante e cultura vibrante.</p>
+        <a href="#" class="btn">Ver mais</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>© 2025 Caroneiro</footer>
+</body>
+</html>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #e9f3ff; /* azul bem claro */
+  color: #1a2b4a;
+}
+
+/* Header */
+header {
+  background: #0a3d91; /* azul escuro */
+  color: #fff;
+  padding: 14px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: #8ccaff; /* azul claro */
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+h2 {
+  margin-bottom: 25px;
+  font-size: 28px;
+  text-align: center;
+  color: #0a3d91;
+}
+
+/* Grid */
+.grid-destinos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 25px;
+}
+
+/* Card */
+.destino {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(10,61,145,0.2);
+  transition: 0.25s;
+  border: 2px solid #c8e0ff;
+}
+
+.destino:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 12px rgba(10,61,145,0.32);
+}
+
+.destino img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+/* Título e texto */
+.destino h3 {
+  font-size: 20px;
+  margin: 15px;
+  color: #0a3d91;
+}
+
+.destino p {
+  margin: 0 15px 20px;
+  line-height: 1.4;
+  color: #1f3c66;
+}
+
+/* Botão */
+.btn {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 15px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: #0a66d4;
+  color: white;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #084ea7;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 25px;
+  margin-top: 40px;
+  background: #0a3d91;
+  color: #fff;
+  font-size: 14px;
+}
+</style>

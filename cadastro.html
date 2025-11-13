@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - TravelSite</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #4cc9f0, #4361ee);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: white;
+            width: 350px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #3a0ca3;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 16px 0;
+            border-radius: 8px;
+            border: 1px solid #aaa;
+            transition: 0.2s;
+        }
+
+        input:focus {
+            border-color: #4361ee;
+            outline: none;
+            box-shadow: 0 0 5px #4361ee;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #4361ee;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #3a0ca3;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #3a0ca3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Cadastro</h2>
+
+        <form>
+            <label>Nome completo</label>
+            <input type="text" placeholder="Seu nome" required>
+
+            <label>Email</label>
+            <input type="email" placeholder="exemplo@email.com" required>
+
+            <label>Senha</label>
+            <input type="password" placeholder="Crie uma senha" required>
+
+            <label>Confirmar senha</label>
+            <input type="password" placeholder="Repita sua senha" required>
+
+            <button type="submit">Cadastrar</button>
+
+            <div class="login-link">
+                Já possui conta? <a href="#">Entrar</a>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

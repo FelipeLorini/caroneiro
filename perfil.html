@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Caroneiro - Perfil</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Caroneiro</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="destinos.html">Destinos</a></li>
+        <li><a href="viajantes.html">Viajantes</a></li>
+        <li><a href="chat.html">Chat</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="form-container">
+      <h2>Seu Perfil</h2>
+      <div class="perfil-grid" id="perfilArea">
+        <div class="perfil-card">
+          <img id="fotoPerfil" src="https://i.pravatar.cc/150" alt="Foto do usuário" />
+          <h3 id="nomePerfil">Usuário</h3>
+          <p id="emailPerfil">email@exemplo.com</p>
+          <button id="btnLogout" class="btn" style="margin-top:10px">Sair</button>
+        </div>
+
+        <div>
+          <h3>Editar informações</h3>
+          <label>Nome</label>
+          <input id="nomeEdit" placeholder="Seu nome" />
+
+          <label>Biografia</label>
+          <textarea id="bioEdit" rows="4" placeholder="Fale um pouco sobre você"></textarea>
+
+          <div class="form-actions">
+            <button id="btnSalvar" class="btn">Salvar</button>
+            <button id="btnCancelar" class="btn" style="background:#ccc;color:#000">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2025 Caroneiro</footer>
+
+  <script>
+    // Carrega dados do localStorage
+    const usuarioKey = 'usuarioCaroneiro';
+    function carregarPerfil(){
+      const u = JSON.parse(localStorage.getItem(usuarioKey));
+      if(!u){
+        // redireciona para login se não tiver usuário
+        window.location.href = 'login.html';
+        return;
+      }
+      document.getElementById('nomePerfil').textContent = u.nome || u.email || 'Usuário';
+      document.getElementById('emailPerfil').textContent = u.email;
+      document.getElementById('nomeEdit').value = u.nome || '';
+      document.getElementById('bioEdit').value = u.bio || '';
+    }
+
+    document.getElementById('btnSalvar').addEventListener('click', ()=>{
+      const u = JSON.parse(localStorage.getItem(usuarioKey)) || {};
+      u.nome = document.getElementById('nomeEdit').value;
+      u.bio = document.getElementById('bioEdit').value;
+      localStorage.setItem(usuarioKey, JSON.stringify(u));
+      alert('Perfil salvo!');
+      carregarPerfil();
+    });
+
+    document.getElementById('btnLogout').addEventListener('click', ()=>{
+      // simples logout: redireciona para login
+      window.location.href = 'login.html';
+    });
+
+    document.getElementById('btnCancelar').addEventListener('click', ()=>{
+      carregarPerfil();
+    });
+
+    // Ao entrar na página
+    carregarPerfil();
+  </script>
+</body>
+</html>

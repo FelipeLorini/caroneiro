@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caroneiro - Encontre sua companhia de viagem</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header / Navegação -->
+  <header>
+    <div class="logo">Caroneiro</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="destinos.html">Destinos</a></li>
+        <li><a href="viajantes.html">Viajantes</a></li>
+        <li><a href="grupos.html">Grupos</a></li>
+        <li><a href="login.html">Entrar / Cadastrar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Banner Principal -->
+  <section class="banner">
+    <img src=" photo-1507525428034-b723cf961d3e.jpeg " alt="Banner de viagem" class="banner-img">
+    <div class="banner-text">
+      <h1>Viajar é melhor com companhia</h1>
+      <p>Encontre seu parceiro de viagem ideal!</p>
+    </div>
+  </section>
+
+  <!-- Busca -->
+  <section class="busca">
+    <input type="text" id="campoBusca" placeholder="Buscar destino, cidade ou viajante" />
+    <button id="btnBusca">Buscar</button>
+  </section>
+
+  <!-- Destinos em destaque -->
+  <section class="destinos">
+    <h2>Destinos em Destaque</h2>
+    <div class="cards">
+
+      <div class="card">
+        <img src="  unnamed.jpg  " alt="Rio de Janeiro">
+        <p>Rio de Janeiro</p>
+      </div>
+
+      <div class="card">
+        <img src="  santuario-nacional-nossa-senhora-aparecida-696x464.webp   " alt="São Paulo">
+        <p>São Paulo</p>
+      </div>
+
+      <div class="card">
+        <img src=" florianopolis.jpg  " alt="Florianópolis">
+        <p>Florianópolis</p>
+      </div>
+
+      <div class="card">
+        <img src=" salvador-brasilturis.webp  " alt="Salvador">
+        <p>Salvador</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Como funciona -->
+  <section class="como-funciona">
+    <h2>Como funciona</h2>
+    <div class="passos">
+      <div class="passo">1. Crie seu perfil</div>
+      <div class="passo">2. Encontre companheiros</div>
+      <div class="passo">3. Parta para a viagem!</div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>© 2025 Caroneiro - Todos os direitos reservados</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+<style>
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #f9f9f9;
+  color: #222;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #0077b6;
+  color: #fff;
+}
+
+header .logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Banner */
+.btn-banner {
+  background: #00b4d8;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: bold;
+
+  /* Estética */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+  transition: 0.3s ease;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.btn-banner:hover {
+  background: #0096c7;
+  transform: scale(1.08);
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* Busca */
+.busca {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 30px;
+}
+
+.busca input {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.busca button {
+  padding: 10px 20px;
+  border: none;
+  background: #0077b6;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Cards de destinos */
+.destinos {
+  padding: 40px;
+  text-align: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Como funciona */
+.como-funciona {
+  background: #e0f7ff;
+  padding: 40px;
+  text-align: center;
+}
+
+.passos {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.passo {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 200px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Rodapé */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #023e8a;
+  color: white;
+}
+
+/* Responsividade */
+@media(max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .passos {
+    flex-direction: column;
+  }
+}
+
+/* Banner com imagem */
+.banner {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(60%);
+}
+
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+/* Cards com imagens */
+.card {
+  background: white;
+  padding: 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card p {
+  padding: 10px;
+  font-weight: bold;
+}
+
+</style>
